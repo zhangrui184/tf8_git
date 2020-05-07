@@ -196,6 +196,9 @@ def print_results(article, abstract, decoded_output):
   tf.logging.info('REFERENCE SUMMARY: %s', abstract)
   tf.logging.info('GENERATED SUMMARY: %s', decoded_output)
   print("---------------------------------------------------------------------------")
+  results_fname = os.path.join("D:\python project me\data\my_point_net/finished_files\exp_logs\decode", 'GENERATED_SUMMARY.txt')
+  with open(results_fname,"w") as f1:
+    f1.write(decoded_output)
 
 
 def make_html_safe(s):

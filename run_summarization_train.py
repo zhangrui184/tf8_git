@@ -32,7 +32,7 @@ from tensorflow.python import debug as tf_debug
 FLAGS = tf.app.flags.FLAGS
 
 root="D:\python project me\data\my_point_net/finished_files"
-data_root="D:\python project me\data\my_point_net/finished_files/val.bin"
+data_root="D:\python project me\data\my_point_net/finished_files/train.bin"
 
 
 # Where to find data
@@ -42,7 +42,7 @@ tf.app.flags.DEFINE_string('vocab_path', root+'\\'+"vocab.bin", 'Path expression
 #tf.app.flags.DEFINE_string('vocab_path','', 'Path expression to text vocabulary file.')
 
 # Important settings
-tf.app.flags.DEFINE_string('mode', 'eval', 'must be one of train/eval/decode')
+tf.app.flags.DEFINE_string('mode', 'train', 'must be one of train/eval/decode')
 tf.app.flags.DEFINE_boolean('single_pass', False, 'For decode mode only. If True, run eval on the full dataset using a fixed checkpoint, i.e. take the current checkpoint, and use it to produce one summary for each example in the dataset, write the summaries to file and then get ROUGE scores for the whole dataset. If False (default), run concurrent decoding, i.e. repeatedly load latest checkpoint, use it to produce summaries for randomly-chosen examples and log the results to screen, indefinitely.')
 
 # Where to save output

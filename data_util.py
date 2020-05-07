@@ -8,10 +8,10 @@ from tensorflow.core.example import example_pb2
 SENTENCE_START = '<s>'
 SENTENCE_END = '</s>'
 
-train_file = "D:\python project me\data\my_seq_attn_diffc/train/train.txt"
-val_file = "D:\python project me\data\my_seq_attn_diffc/val/val.txt"
-test_file = "D:\python project me\data\my_seq_attn_diffc/test/test.txt"
-finished_files_dir = "D:\python project me\data\my_seq_attn_diffc/finished_files"
+train_file = "D:\python project me\data\my_point_net/train/train.txt"
+val_file = "D:\python project me\data\my_point_net/val/val.txt"
+test_file = "D:\python project me\data\my_point_net/test/test.txt"
+finished_files_dir = "D:\python project me\data\my_point_net/finished_files"
 
 VOCAB_SIZE = 200000
 

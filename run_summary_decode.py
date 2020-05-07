@@ -31,8 +31,8 @@ from tensorflow.python import debug as tf_debug
 
 FLAGS = tf.app.flags.FLAGS
 
-root="D:\python project me\data\my_seq_attn_diffc/finished_files"
-data_root="D:\python project me\data\my_seq_attn_diffc/finished_files/test.bin"
+root="D:\python project me\data\my_point_net/finished_files"
+data_root="D:\python project me\data\my_point_net/finished_files/test.bin"
 
 
 # Where to find data
