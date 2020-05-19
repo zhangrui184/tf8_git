@@ -31,13 +31,14 @@ from tensorflow.python import debug as tf_debug
 
 FLAGS = tf.app.flags.FLAGS
 
-root="D:\python project me\data\my_point_net/finished_files"
-data_root="D:\python project me\data\my_point_net/finished_files/train.bin"
-
+#root="D:\python project me\data\my_point_net/finished_files"
+root="/home/ddd/data/news_data/finished_files"
+data_root="/home/ddd/data/news_data/finished_files/train.bin"
+#data_root="D:\python project me\data\my_point_net/finished_files/train.bin"
 
 # Where to find data
 tf.app.flags.DEFINE_string('data_path', data_root, 'Path expression to tf.Example datafiles. Can include wildcards to access multiple datafiles.')
-tf.app.flags.DEFINE_string('vocab_path', root+'\\'+"vocab.bin", 'Path expression to text vocabulary file.')
+tf.app.flags.DEFINE_string('vocab_path', root+'/'+"vocab", 'Path expression to text vocabulary file.')
 #tf.app.flags.DEFINE_string('data_path', '', 'Path expression to tf.Example datafiles. Can include wildcards to access multiple datafiles.')
 #tf.app.flags.DEFINE_string('vocab_path','', 'Path expression to text vocabulary file.')
 
