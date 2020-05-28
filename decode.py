@@ -28,7 +28,7 @@ import logging
 import numpy as np
 
 FLAGS = tf.app.flags.FLAGS
-
+#single_pass=True
 SECS_UNTIL_NEW_CKPT = 60  # max number of seconds before loading new checkpoint
 
 
@@ -66,6 +66,7 @@ class BeamSearchDecoder(object):
     # Make the decode dir if necessary
     if not os.path.exists(self._decode_dir): os.mkdir(self._decode_dir)
 
+    #if FLAGS.single_pass:
     if FLAGS.single_pass:
       # Make the dirs to contain output written in the correct format for pyrouge
       self._rouge_ref_dir = os.path.join(self._decode_dir, "reference")
@@ -196,8 +197,12 @@ def print_results(article, abstract, decoded_output):
   tf.logging.info('REFERENCE SUMMARY: %s', abstract)
   tf.logging.info('GENERATED SUMMARY: %s', decoded_output)
   print("---------------------------------------------------------------------------")
-  results_fname = os.path.join("D:\python project me\data\my_point_net/finished_files\exp_logs\decode", 'GENERATED_SUMMARY.txt')
+  results_fname = os.path.join("/home/ddd/data/cnndailymail3/finished_files/exp_logs/decode", 'GENERATED_SUMMARY.txt')
   with open(results_fname,"w") as f1:
+    f1.write(article)
+    f1.write("------------------------------------------------")
+    f1.write(abstract)
+    f1.write("----------------------------")
     f1.write(decoded_output)
 
 

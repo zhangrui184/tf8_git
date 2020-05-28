@@ -31,19 +31,21 @@ from tensorflow.python import debug as tf_debug
 
 FLAGS = tf.app.flags.FLAGS
 
-root="D:\python project me\data\my_point_net/finished_files"
-data_root="D:\python project me\data\my_point_net/finished_files/test.bin"
-
-
+#root="D:\python project me\data\my_point_net/finished_files"
+#data_root="D:\python project me\data\my_point_net/finished_files/test.bin"
+#root="/home/ddd/data/news_data/finished_files"
+#data_root="/home/ddd/data/news_data/finished_files/val.bin"
+root="/home/ddd/data/cnndailymail3/finished_files"
+data_root="/home/ddd/data/cnndailymail3/finished_files/test.bin"
 # Where to find data
 tf.app.flags.DEFINE_string('data_path', data_root, 'Path expression to tf.Example datafiles. Can include wildcards to access multiple datafiles.')
-tf.app.flags.DEFINE_string('vocab_path', root+'\\'+"vocab.bin", 'Path expression to text vocabulary file.')
+tf.app.flags.DEFINE_string('vocab_path', root+'/'+"vocab", 'Path expression to text vocabulary file.')
 #tf.app.flags.DEFINE_string('data_path', '', 'Path expression to tf.Example datafiles. Can include wildcards to access multiple datafiles.')
 #tf.app.flags.DEFINE_string('vocab_path','', 'Path expression to text vocabulary file.')
 
 # Important settings
 tf.app.flags.DEFINE_string('mode', 'decode', 'must be one of train/eval/decode')
-tf.app.flags.DEFINE_boolean('single_pass', False, 'For decode mode only. If True, run eval on the full dataset using a fixed checkpoint, i.e. take the current checkpoint, and use it to produce one summary for each example in the dataset, write the summaries to file and then get ROUGE scores for the whole dataset. If False (default), run concurrent decoding, i.e. repeatedly load latest checkpoint, use it to produce summaries for randomly-chosen examples and log the results to screen, indefinitely.')
+tf.app.flags.DEFINE_boolean('single_pass',True, 'For decode mode only. If True, run eval on the full dataset using a fixed checkpoint, i.e. take the current checkpoint, and use it to produce one summary for each example in the dataset, write the summaries to file and then get ROUGE scores for the whole dataset. If False (default), run concurrent decoding, i.e. repeatedly load latest checkpoint, use it to produce summaries for randomly-chosen examples and log the results to screen, indefinitely.')
 
 # Where to save output
 tf.app.flags.DEFINE_string('log_root', root, 'Root directory for all logging.')
@@ -294,6 +296,8 @@ def main(unused_argv):
   # On each step, we have beam_size-many hypotheses in the beam, so we need to make a batch of these hypotheses.
   if FLAGS.mode == 'decode':
     FLAGS.batch_size = FLAGS.beam_size
+
+
 
   # If single_pass=True, check we're in decode mode
   if FLAGS.single_pass and FLAGS.mode!='decode':
