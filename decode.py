@@ -215,13 +215,13 @@ def make_html_safe(s):
 
 def rouge_eval(ref_dir, dec_dir):
   """Evaluate the files in ref_dir and dec_dir with pyrouge, returning results_dict"""
-  r = pyrouge.Rouge155()
+  r = pyrouge.Rouge155('/home/ddd/project/rouge_files/pyrouge/tools/ROUGE-1.5.5')
   r.model_filename_pattern = '#ID#_reference.txt'
   r.system_filename_pattern = '(\d+)_decoded.txt'
   r.model_dir = ref_dir
   r.system_dir = dec_dir
   logging.getLogger('global').setLevel(logging.WARNING) # silence pyrouge logging
-  rouge_results = r.convert_and_evaluate()
+  rouge_results = r.convert_and_evaluate(rouge_args='-e {}/data -a -2 -1 -c 95 -U -n 2 -w 1.2 -b 75'.format('/home/ddd/project/rouge_files/pyrouge/tools/ROUGE-1.5.5'))
   return r.output_to_dict(rouge_results)
 
 
